@@ -7,8 +7,7 @@ import datetime
 
 logging.basicConfig(level=logging.INFO)
 
-#openai.api_key = os.getenv("OPENAI_API_KEY")
-openai.api_key = "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"
+openai.api_key = os.getenv("OPENAI_API_KEY")
 stories_fn = "ministories.json"
 
 app = Flask(__name__)
