@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  web:
+    platform: linux/amd64
+    build:
+      context: ./personal-guide-be
+      dockerfile: Dockerfile
+    ports:
+      - 5153:5153
+    environment:
+      - FLASK_DEBUG=1
+      - TEMPLATES_AUTO_RELOAD=1
+    volumes:
+      - ./personal-guide-be:/app
+  frontend:
+    platform: linux/amd64
+    build:
+      context: ./personal-guide
+      dockerfile: Dockerfile
+    ports: 
+      - 4200:4200
+    depends_on:
+      - web
+    volumes:
+      - ./personal-guide:/app

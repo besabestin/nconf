@@ -1,0 +1,32 @@
+.main {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+.fixed-header {
+    padding: 10px 0;
+}
+.main-nav {
+    padding: 10px;
+    background: #e8f0f3;
+    background: #144456;
+    background: #353535;
+    border-bottom: 1px solid #111;
+    border-top: 1px solid #111;
+}
+    .main-nav a {
+        text-decoration: none;
+        margin-right: 1em;
+        color: #b0b0b0;
+    }
+
+.main-wrapper {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.center {
+    max-width: 1024px;
+    margin: 0 auto;
+}

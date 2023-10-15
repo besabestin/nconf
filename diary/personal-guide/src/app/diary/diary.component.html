@@ -1,0 +1,102 @@
+<div class="boards">
+
+    <div class="diary-wrapper">
+        <div class="search-bar">
+            <div class="search-input">
+                <input type="text" name="" id="" placeholder="Search your own diary..." [(ngModel)]="searchEntry" (keyup.enter)="searchInStory()">
+            </div>
+            <div class="new-journal-btn">
+                <a href="javascript:;" (click)="showJournalCreator = !showJournalCreator">+ Journal Entry</a>
+            </div>
+        </div>
+        <div class="day-entry">
+            <div class="diary-content search-diary">
+                <div>
+                    <p>{{storyService.searchResult}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="day-entry" *ngIf="showJournalCreator">
+            <div class="diary-content">
+                <form class="journal-form">
+                    <div>
+                        <h2>Add Journal Entry:</h2>
+                    </div>
+                    <div>
+                        <label for="journal-date">Date of Journal:</label>
+                        <input type="text" name="journal-date" id="journal-date" placeholder="DD/MM/YYYY" [(ngModel)]="storyDate">
+                    </div>
+                    <div>
+                        <label for="journal-content">Content:</label>
+                        <textarea name="journal-content" id="journal-content" cols="30" rows="10" [(ngModel)]="storyContent"></textarea>
+                    </div>
+                    <div>
+                        <button (click)="saveStory()">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div *ngIf="storyService.aLife">
+            <div class="day-entry" *ngFor="let story of storyService.aLife.stories">
+                <div class="diary-content diary-content-read">
+                    <div>
+                        <span class="diary-entry-date">{{story.when}}</span>
+                        <span class="emoti-sentiment"> | {{story.sentiment}}</span>
+                    </div>
+                    <p>{{story.content}}</p>
+                    <div class="visualizer">
+                        <a href="javascript:;" (click)="searchImages(story)">Visualize</a>
+                        <ul class="thumbnail">
+                            <li *ngFor="let img of story.images">
+                                <img src="{{img}}" alt="diary event">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="day-summary">
+                        <div class="day-sentiment" style="border-bottom: 1px solid #ddd;padding: 10px 0;">{{story.sentiment}}</div>
+                        <div class="day-events" style="padding: 10px 0;">{{story.events}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="calendar-board">
+        <div class="due-today calendar-card">
+            <h3>Due Today</h3>
+            <div class="card-content">
+                <p>What things are due today as extracted from your several diary entries</p>
+                <div class="nothing-found">nothing found at the moment</div>
+                <div *ngIf="
+                storyService.aLife && storyService.aLife.allTasks && 
+                storyService.aLife.allTasks.today">
+                    <h4>For Today</h4>
+                    <ul>
+                        <li *ngFor="let task of storyService.aLife.allTasks.today.events">
+                            <span class="task-name">{{task}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="calendar-entries calendar-card">
+            <h3>Future entries</h3>
+            <div class="card-content">
+                <p>What would happen to pass in the coming days/weeks</p>
+                <div class="nothing-found">nothing found at the moment</div>
+                <div *ngIf="
+                storyService.aLife && storyService.aLife.allTasks && 
+                storyService.aLife.allTasks.tasks">
+                    <div *ngFor="let daytasks of storyService.aLife.allTasks.tasks">
+                        <h4>{{daytasks.date}}</h4>
+                        <ul>
+                            <li *ngFor="let task of daytasks.events">
+                                <span class="task-name">{{task}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

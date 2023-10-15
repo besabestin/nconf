@@ -1,0 +1,167 @@
+.boards {
+    display: flex;
+    flex-direction: row;
+}
+.diary-wrapper {
+    flex: 64%;
+    padding-right: 40px;
+}
+.calendar-board {
+    flex: 36%;
+    padding-left: 20px;
+    padding-top: 50px;
+}
+.search-bar {
+    display: flex;
+    margin-bottom: 20px;
+}
+    .search-bar .search-input {
+        flex-grow: 1;
+    }
+        .search-input input {
+            width: 100%;
+            padding: 8px;
+            background: #444;
+            border: 1px solid #111;
+            color: #ccc;
+        }
+    .search-bar .new-journal-btn {
+        margin-left: 30px;
+    }
+        .new-journal-btn a {
+            text-decoration: none;
+            color: #777;
+            position: relative;
+            top: 8px;
+        }
+.day-entry {
+    display: flex;
+}
+/*.day-entry .day-summary {
+    width: 200px;
+    min-width: 200px;
+}*/
+.day-entry .day-summary {
+    display: none;
+}
+.day-entry .diary-content {
+    flex-grow: 1;
+}
+.search-diary input[type="text"]{
+    margin-bottom: 20px;
+    padding: 8px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    min-width: 70%;
+}
+.day-entry .diary-entry-date {
+    /*text-align: right;*/
+    font-size: 12px;
+    color: #555;
+    color: #999;
+    margin-bottom: -8px;
+    font-weight: 500;
+}
+.day-entry .diary-content-read {
+    /*background: #f2f2f2;
+    padding: 20px 10px;
+    border-bottom: 2px solid #fff;*/
+    /*border-bottom: 1px solid #ddd;
+    padding: 0;
+    margin-bottom: 30px;*/
+
+    /*padding: 20px;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 0 12px #ddd;
+    margin-bottom: 30px;*/
+
+    padding: 20px;
+    border: 1px solid #444;
+    box-shadow: 0 0 12px #111;
+    margin-bottom: 30px;
+}
+.day-entry .visualizer{
+    display: none;
+}
+    .day-entry .visualizer a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #af684c;
+    }
+    .day-entry .visualizer a:hover {
+        color: #444;
+    }
+    .day-entry .visualizer .thumbnail {
+        list-style: none;
+        margin: 0;
+        padding: 10px 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+/*.day-entry .day-summary {
+    padding: 20px 10px;
+}
+
+.day-summary .day-sentiment {
+    padding: 10px 0;
+    font-size: 13px;
+    border-bottom: 1px solid #ddd;
+}
+
+.day-summary .day-events {
+    padding: 10px 0;
+    font-size: 13px;
+}*/
+
+/* form */
+.journal-form {
+    padding: 0 0 20px 0;
+}
+    .journal-form label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+    }
+    .journal-form input[type="text"] {
+        margin-bottom: 20px;
+        padding: 8px;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        max-width: 110px;
+    }
+    .journal-form textarea {
+        border: 1px solid #ddd;
+        min-width: 60%;
+    }
+    .journal-form button {
+        margin-top: 10px;
+        padding: 5px 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+.calendar-card {
+    border: 1px solid #555;
+    /*padding: 10px;*/
+    /*border-radius: 4px;*/
+    /*box-shadow: 1px 1px 4px #ddd;*/
+    /*margin-bottom: 30px;*/
+    margin-bottom: -1px;
+}
+    .calendar-card h3 {
+        border-bottom: 1px solid #555;
+        padding-bottom: 18px;
+        padding-left: 15px;
+    }
+    .calendar-card .card-content {
+        padding: 0 15px 15px 15px;
+    }
+    .calendar-card .nothing-found {
+        font-style: italic;
+        font-size: 13px;
+        color: #666;
+    }
