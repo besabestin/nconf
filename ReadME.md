@@ -1,4 +1,5 @@
-#NConf 2023
+# NConf 2023
+
 This repository contains contents for the nconf:
 - a web app with a flask backend to demonstrate the usage of the openai gpt api
 - starting code contents for building the transformers architecture
