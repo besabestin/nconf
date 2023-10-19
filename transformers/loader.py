@@ -15,21 +15,21 @@ class Dictionary(object):
     
     def create_vocab(self, full_text):
         self.vocab = set(full_text)
-        self.word2idx = {word: idx for idx, word in enumerate(sorted(list(self.vocab)))}
-        self.idx2word = {self.word2idx[word]: word for word in self.vocab}
+        #TODO: dict
+        # word: idx
+        # word2idx[word]: word
 
+    #TODO: encode words, decode indices
     def encode(self, words):
-        return [self.word2idx[word] for word in words]
+        return [] 
 
     def decode(self, indices):
-        return [self.idx2word[idx] for idx in indices]
+        return []
 
     def __len__(self):
         return len(self.vocab)
 
 
-# batch_size,
-# context_size,
 class Corpus(object):
     def __init__(self, path, batch_size=32, context_size=32) -> None:
         self.dictionary = Dictionary()
@@ -55,8 +55,9 @@ class Corpus(object):
     def prepare(self, words):
         print(f'inspect words: {len(words)} {words[0:8]}')
         #OMIT: following two lines
-        inputs = torch.stack([torch.tensor(self.dictionary.encode(words[i:i+self.context_size]), dtype=torch.long) for i in range(len(words) - self.context_size - 1)])
-        outputs = torch.stack([torch.tensor(self.dictionary.encode(words[i:i+self.context_size]), dtype=torch.long) for i in range(1,len(words) - self.context_size)])
+        #TODO: all input output possibilities
+        #inputs i:0,le-cx-1
+        #outputs i:1,len-cx
         #randomize the order of the datasets
         _perm = torch.randperm(inputs.shape[0])
         train_split = int(0.8*inputs.shape[0])
@@ -74,4 +75,4 @@ class Corpus(object):
     def get_batch(self, _stage):
         dataset = self.train_data if _stage == 'train' else self.val_data
         _perm = torch.randperm(dataset['X'].shape[0])
-        return dataset['X'][_perm][:self.batch_size, :].to(device), dataset['y'][_perm][:self.batch_size, :].to(device)
+        return None, None

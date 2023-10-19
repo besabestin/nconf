@@ -24,20 +24,8 @@ vocab_size = len(corpus.dictionary)
 
 print(len(corpus.dictionary))
 
-class LanguageModel(nn.Module):
-    def __init__(self) -> None:
-        super().__init__()
-        self.token_embedding = nn.Embedding(vocab_size, ndim)
-        self.net = nn.Sequential(
-            nn.Linear(ndim, ndim),
-            nn.Linear(ndim, vocab_size)
-        )
-
-    def forward(self, x):
-        x = self.token_embedding(x)
-        x = self.net(x)
-        x = F.log_softmax(x, dim=-1)
-        return x
+#TODO: language model:
+# sequential - two linears, final softmax
 
 
 @torch.no_grad()
@@ -62,16 +50,7 @@ loss_fn = nn.NLLLoss()
 # training
 if train_model:
     for iter in range(niter):
-        model.train()
-        X, y = corpus.get_batch('train')
-        out = model(X)
-        B, T, C = out.shape
-        out = out.view(B*T, C)
-        y = y.view(B*T)
-        loss = loss_fn(out, y.flatten())
-        loss.backward()
-        optim.step()
-        optim.zero_grad(set_to_none=True)
+        # TODO: train flag, batches, view, loss function, backpropagation, step
 
         if iter%100 == 0:
             print(f"{iter} train loss: {evaluate_loss('train')} validation loss: {evaluate_loss('val')}")
